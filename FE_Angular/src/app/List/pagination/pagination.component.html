@@ -1,0 +1,5 @@
+<ul class="pagination" *ngIf="totalPages>0">
+  <li class="page-item" [class.disabled]="currentPage==1"><a class="page-link" style="cursor: pointer;" (click)="setTo(currentPage - 1)">Previous</a></li>
+  <li class="page-item" *ngFor="let i of pages"><a class="page-link" style="cursor: pointer;" (click)="setTo(i)">{{ i }}</a></li>
+  <li class="page-item" [class.disabled]="currentPage==totalPages"><a class="page-link" style="cursor: pointer;" (click)="setTo(currentPage + 1)">Next</a></li>
+</ul>

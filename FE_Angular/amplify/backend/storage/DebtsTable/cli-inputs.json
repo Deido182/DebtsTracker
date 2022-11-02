@@ -1,0 +1,10 @@
+{
+  "resourceName": "DebtsTable",
+  "tableName": "DebtsTable",
+  "partitionKey": {
+    "fieldName": "email",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

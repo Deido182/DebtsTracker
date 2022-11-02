@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col">
+        <div class="p-3 border bg-light">
+            <div style="position: relative">
+            <ngx-spinner
+                size="medium"
+                color="grey"
+                type="ball-scale-multiple"
+                [zIndex]="constants.zIndexLevel.mainPage"
+                [fullScreen]="false">
+            </ngx-spinner>
+            </div>  
+            <div *ngIf="!loading">
+                <div class="row">
+                    <div class="col text-center">
+                        <button class="btn btn-default btn-sm btn-circle"
+                                style="border-radius: 100%" 
+                                (click)="onRefreshClick()">
+                        <div><fa-icon [icon]="constants.icons.refresh"></fa-icon></div>  
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="col-md-4">
+                    <app-filter-aggregator
+                        [filterFactories]="filterFactories" 
+                        [amounts]="amounts"
+                        (filteredAmounts)="onNewFilteredAmounts($event)">
+                    </app-filter-aggregator>
+                </div>  
+                <app-list 
+                    [amounts]="filteredAmounts"
+                    [selectable]="false">
+                </app-list>
+            </div>
+        </div>
+    </div>
+</div>

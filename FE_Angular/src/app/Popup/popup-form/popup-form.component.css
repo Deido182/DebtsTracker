@@ -1,0 +1,29 @@
+div.credit {  
+    border: 3px solid var(--bs-success);
+    border-radius: 10px;
+}
+
+div.debt {
+    border: 3px solid var(--bs-danger);
+    border-radius: 10px; 
+}
+
+div.block {
+    width: 50%;
+    top: 25%;
+    left: 25%;
+    position: relative;  
+    padding: 20px;
+    background-color: lightgray;
+}
+
+div.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background: rgb(52, 53, 52, 0.7); /* Just to visualize the extent */
+    z-index: 10000;
+}

@@ -1,0 +1,81 @@
+<ngx-spinner
+    size="large"
+    color="grey"
+    type="ball-scale-multiple"
+    [fullScreen]="true">
+</ngx-spinner>
+<div class="row" *ngIf="!confirming">
+    <div class="col-md-4 offset-md-4">
+        <div class="login-form bg-light mt-4 p-4">
+            <form class="row g-3" (ngSubmit)="onMainSubmit()" #mainForm="ngForm">
+                <div class="col-xs-12">
+                    <label>Email</label>
+                    <input type="email"
+                           name="email"
+                           class="form-control"
+                           placeholder="Email"
+                           ngModel
+                           required
+                           email>
+                </div>
+                <div class="col-xs-12">
+                    <label>Password</label>
+                    <input type="password"
+                           name="password"
+                           class="form-control"
+                           placeholder="Password"
+                           ngModel
+                           required
+                           minlength="6">
+                </div>
+                <div class="col-xs-12" *ngIf="registering">
+                    <label>Confirm Password</label>
+                    <input type="password"
+                           name="passwordConfirmed"
+                           class="form-control"
+                           placeholder="Confirm Password"
+                           ngModel
+                           required>
+                </div>
+                <div class="col-xs-12">
+                    <button type="submit"
+                            class="btn btn-dark float-end"
+                            [disabled]="!mainForm.valid">{{ registering ? 'Register' : 'Login' }}</button>
+                </div>
+            </form>
+            <hr class="mt-4">
+            <div class="col-xs-12" *ngIf="!registering">
+                <p class="text-center mb-0">Have not an account yet? <a routerLink="/auth" (click)="registering = true">Signup</a></p>
+            </div>
+            <div class="col-xs-12" *ngIf="registering">
+                <p class="text-center mb-0">Already registered? <a routerLink="/auth" (click)="registering = false">Signin</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="confirming">
+    <div class="col-md-4 offset-md-4">
+        <div class="login-form bg-light mt-4 p-4">
+            <form class="row g-3" (ngSubmit)="onVerifySubmit()" #verificationForm="ngForm">
+                <div class="col-xs-12">
+                    <label>Verification code</label>
+                    <input type="text"
+                        name="verificationCode"
+                        class="form-control"
+                        placeholder="Verification code"
+                        ngModel
+                        required>
+                </div>
+                <div class="col-xs-12">
+                    <button type="submit"
+                            class="btn btn-dark float-end"
+                            [disabled]="!verificationForm.valid">Verify</button>
+                </div>
+            </form>
+            <hr class="mt-4">
+            <div class="col-xs-12">
+                <p class="text-center mb-0">Email not received? <a routerLink="/auth" (click)="onSendEmailAgain()">Send again</a></p>
+            </div>
+        </div>
+    </div>
+</div>

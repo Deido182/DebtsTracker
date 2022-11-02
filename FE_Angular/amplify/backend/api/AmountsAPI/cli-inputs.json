@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/amounts": {
+      "name": "/amounts",
+      "lambdaFunction": "DebtsController",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

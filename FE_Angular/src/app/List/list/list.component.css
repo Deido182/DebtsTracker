@@ -1,0 +1,14 @@
+.bg-golden-strips {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--gold) 0px,
+        var(--gold) 20px,
+        white 20px,
+        white 40px
+    );
+    border: 1px solid var(--gold);
+}
+
+.golden-active {
+    background: linear-gradient(90deg, var(--gold) 70%, white);
+}

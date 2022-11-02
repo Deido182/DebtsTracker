@@ -1,0 +1,20 @@
+<div class="btn-group" role="group">
+    <button type="button" 
+            class="btn btn-dark" 
+            [class.active]="selected==constants.icons.inbox" 
+            (click)="onClick(constants.icons.inbox)">
+    <fa-icon [icon]="constants.icons.inbox"></fa-icon>
+    </button>
+    <button type="button"
+            class="btn btn-dark" 
+            [class.active]="selected==constants.icons.outbox" 
+            (click)="onClick(constants.icons.outbox)">
+    <fa-icon [icon]="constants.icons.outbox"></fa-icon>
+    </button>
+    <button type="button"
+            class="btn btn-dark" 
+            [class.active]="selected==constants.icons.confirmed" 
+            (click)="onClick(constants.icons.confirmed)">
+    <fa-icon [icon]="constants.icons.confirmed"></fa-icon>
+    </button>
+</div>

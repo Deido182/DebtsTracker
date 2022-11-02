@@ -1,0 +1,53 @@
+<div class="overlay" [ngStyle]="{ 'z-index': constants.zIndexLevel.popupOffcanvas }">
+  <div class="block" [class.credit]="credit" [class.debt]="!credit">
+    <form (ngSubmit)="onSubmit()" #amountForm="ngForm">
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number"
+               class="form-control"
+               id="amount" 
+               name="amount"
+               placeholder="Enter the amount"
+               ngModel
+               required
+               min="1">
+      </div>
+      <div class="form-group">
+        <label for="reason">Reason</label>
+        <input type="text"
+               class="form-control" 
+               id="reason" 
+               name="reason"
+               placeholder="Enter the reason of that amount"
+               ngModel
+               required>
+      </div>
+      <div class="form-group">
+        <label for="involved">Other person involved</label>
+        <input type="text"
+               class="form-control" 
+               id="involved" 
+               name="involved"
+               placeholder="Enter the email"
+               ngModel
+               required>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 text-center"> 
+          <button class="btn btn-success"
+                  type="sumbit"
+                  [disabled]="!amountForm.valid">
+            <fa-icon [icon]="constants.icons.check"></fa-icon> 
+          </button>
+        </div>
+        <div class="col-md-6 text-center"> 
+          <button class="btn btn-danger"
+                  (click)="onCloseClick()">
+            <fa-icon [icon]="constants.icons.mark"></fa-icon> 
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<app-nav-bar (heightChanged)="onNavBarHeightChanged($event)"></app-nav-bar>
+<div style="position: absolute; width: 100%;" 
+     [ngStyle]="{ top: navBarHeight }">
+    <router-outlet></router-outlet>
+</div>

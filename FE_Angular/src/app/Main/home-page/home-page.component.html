@@ -1,0 +1,117 @@
+<ngx-spinner
+  [name]="pageSpinnerName"
+  size="large"
+  color="grey"
+  type="ball-scale-multiple"
+  [zIndex]="constants.zIndexLevel.alertsSpinners"
+  [fullScreen]="true">
+</ngx-spinner>
+<ng-template appDynamic></ng-template>
+<app-alert [type]="alertType" [message]="alertMessage" [showWhen]="showAlert"></app-alert>
+<div class="row">
+  <div class="col">
+   <div class="p-3 border bg-light">
+    <div style="position: relative">
+      <ngx-spinner
+        [name]="listSpinnerName"
+        size="medium"
+        color="grey"
+        type="ball-scale-multiple"
+        [zIndex]="constants.zIndexLevel.mainPage"
+        [fullScreen]="false">
+      </ngx-spinner>
+    </div>  
+    <div *ngIf="!loading">
+      <div class="row">
+        <div class="col text-center">
+          <button class="btn btn-default btn-sm btn-circle"
+                  style="border-radius: 100%" 
+                  (click)="onRefreshClick()">
+            <div><fa-icon [icon]="constants.icons.refresh"></fa-icon></div>  
+          </button>
+        </div>
+      </div>
+      <hr>
+      <div class="row" style="padding:10px">
+        <div class="col-md-6">
+          <app-filter-aggregator
+            [filterFactories]="filterFactories" 
+            [amounts]="amounts"
+            (filteredAmounts)="onNewFilteredAmounts($event)">
+          </app-filter-aggregator>        
+        </div>
+        <div class="col-md-6" style="text-align: right;">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" [disabled]="!isSettleEnabled()" (click)="selectedOperation=modOperations.Settle">Settle</button>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" [disabled]="!isConfirmEnabled()" (click)="selectedOperation=modOperations.Confirm">Confirm</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" [disabled]="!isCancelEnabled()" (click)="selectedOperation=modOperations.Cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <app-list 
+            [amounts]="filteredAmounts"
+            (selected)="onNewSelectedAmounts($event)">
+          </app-list>
+        </div>
+        <div class="col-md-4">
+          <app-circular-chart 
+            [amounts]="filteredAmounts">
+          </app-circular-chart>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="text-center">
+          <label><h1 [style]="total > 0 ? 'color:green' : total < 0 ? 'color:crimson' : ''">{{ total }}</h1></label>
+        </div>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-6 text-center"> 
+    <button class="btn btn-success" (click)="onPopupButtonClick(true)">
+      <fa-icon [icon]="constants.icons.plusCircle"></fa-icon> | add credit
+    </button>
+  </div>
+  <div class="col-md-6 text-center"> 
+    <button class="btn btn-danger" (click)="onPopupButtonClick(false)">
+      <fa-icon [icon]="constants.icons.minusCircle"></fa-icon> | add debt  
+    </button>
+  </div>
+</div>
+<hr>
+<div class="offcanvas offcanvas-top h-75"
+     tabindex="-1" 
+     id="offcanvasTop"
+     [ngStyle]="{ 'z-index': constants.zIndexLevel.popupOffcanvas }">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">Selected items</h5>
+  </div>
+  <div class="offcanvas-body">
+    <app-list 
+      [amounts]="selectedAmounts" 
+      [pageSize]="3"
+      [selectable]="false"></app-list>
+  </div>
+  <div class="offcanvas-footer">
+    <div class="row" style="padding: 10px;">
+      <div class="col-md-6 text-center"> 
+        <button class="btn btn-success"
+                (click)="onOffcanvasConfirm()">
+          <fa-icon [icon]="constants.icons.check"></fa-icon> 
+        </button>
+      </div>
+      <div class="col-md-6 text-center"> 
+        <button class="btn btn-danger" 
+                data-bs-dismiss="offcanvas">
+          <fa-icon [icon]="constants.icons.mark"></fa-icon> 
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
