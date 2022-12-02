@@ -9,9 +9,9 @@ div.debt {
 }
 
 div.block {
-    width: 50%;
+    width: 70%;
     top: 25%;
-    left: 25%;
+    left: 15%;
     position: relative;  
     padding: 20px;
     background-color: lightgray;

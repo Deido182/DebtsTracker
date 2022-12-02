@@ -49,13 +49,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 mt-2 mb-2">
           <app-list 
             [amounts]="filteredAmounts"
             (selected)="onNewSelectedAmounts($event)">
           </app-list>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mt-2 mb-2">
           <app-circular-chart 
             [amounts]="filteredAmounts">
           </app-circular-chart>
@@ -73,13 +73,13 @@
 </div>
 <hr>
 <div class="row">
-  <div class="col-md-6 text-center"> 
-    <button class="btn btn-success" (click)="onPopupButtonClick(true)">
+  <div class="col-sm-6 text-center"> 
+    <button class="btn btn-success std-width-button mt-1 mb-1" (click)="onPopupButtonClick(true)">
       <fa-icon [icon]="constants.icons.plusCircle"></fa-icon> | add credit
     </button>
   </div>
-  <div class="col-md-6 text-center"> 
-    <button class="btn btn-danger" (click)="onPopupButtonClick(false)">
+  <div class="col-sm-6 text-center"> 
+    <button class="btn btn-danger std-width-button mt-1 mb-1" (click)="onPopupButtonClick(false)">
       <fa-icon [icon]="constants.icons.minusCircle"></fa-icon> | add debt  
     </button>
   </div>
@@ -100,13 +100,13 @@
   </div>
   <div class="offcanvas-footer">
     <div class="row" style="padding: 10px;">
-      <div class="col-md-6 text-center"> 
+      <div class="col-6 text-center"> 
         <button class="btn btn-success"
                 (click)="onOffcanvasConfirm()">
           <fa-icon [icon]="constants.icons.check"></fa-icon> 
         </button>
       </div>
-      <div class="col-md-6 text-center"> 
+      <div class="col-6 text-center"> 
         <button class="btn btn-danger" 
                 data-bs-dismiss="offcanvas">
           <fa-icon [icon]="constants.icons.mark"></fa-icon> 
