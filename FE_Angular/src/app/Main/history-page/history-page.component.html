@@ -32,6 +32,12 @@
                     [amounts]="filteredAmounts"
                     [selectable]="false">
                 </app-list>
+                <hr>
+                <div class="row">
+                  <div class="text-center">
+                    <label><h1 [style]="total > 0 ? 'color:green' : total < 0 ? 'color:crimson' : ''">{{ total | number : '.2-2' }} €</h1></label>
+                  </div>
+                </div>
             </div>
         </div>
     </div>

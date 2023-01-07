@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Amount } from 'src/app/Model/amount.model';
 import { AbstractFilterAmountsComponent } from '../abstract-filter-amounts.component';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-filter-on-dates',
@@ -15,8 +16,9 @@ export class FilterOnDatesComponent extends AbstractFilterAmountsComponent {
     end: new FormControl(),
   });
 
-  constructor() {
+  constructor(private dateAdapter: DateAdapter<Date>) {
     super();
+    this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
   }
 
   filter(): Iterable<Amount> {

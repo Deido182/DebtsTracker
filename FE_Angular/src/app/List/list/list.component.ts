@@ -9,6 +9,7 @@ import { constants } from 'src/assets/constants';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnChanges {
+  readonly dateFormat = 'dd/MM/YYYY';
 
   @Input() amounts: Amount[] = [];
   @Input() pageSize: number = 5;

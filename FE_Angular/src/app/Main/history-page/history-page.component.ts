@@ -32,6 +32,10 @@ export class HistoryPageComponent implements OnInit {
     private changeDetector: ChangeDetectorRef
   ) { }
 
+  get total() {
+    return this.filteredAmounts.reduce((acc, x) => acc + x.quantity * (x.isCredit ? 1 : -1), 0);
+  }
+
   ngOnInit(): void {
     this.amountsService.amountsActions.subscribe({
       next: (action) => {

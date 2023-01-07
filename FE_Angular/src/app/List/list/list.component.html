@@ -23,11 +23,11 @@
       <div class="col-md-10">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{ x.quantity }}</h5>
-          <small>{{ x.date | date:'short' }}</small>
+          <small>{{ x.date | date:dateFormat }}</small>
         </div>
         <div class="row">
           <div class="col-12 col-md-9"><p>{{ x.reason }}</p></div>
-          <div class="col-12 col-md-3" style="text-align: end;"><b *ngIf="x.paidOn!=null">Paid on: {{ x.paidOn | date:'short' }}</b></div>
+          <div class="col-12 col-md-3" style="text-align: end;"><b *ngIf="x.paidOn!=null">Paid on: {{ x.paidOn | date:dateFormat }}</b></div>
         </div>
         <small>{{ x.involved }}</small>
       </div>
