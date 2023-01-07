@@ -31,9 +31,11 @@ export class PopupFormComponent {
       this.form.value.reason, 
       this.form.value.involved
     );
-    this.amountSubmitted.next(amount);
-    this.form.reset();
-    console.log('Submitted');
+    if(confirm(this.form.value.amount + " €\n" + this.form.value.reason + "\n" + this.form.value.involved)) {
+      this.amountSubmitted.next(amount);
+      this.form.reset();
+      console.log('Submitted');
+    }
   }
 
   onCloseClick(): void {
